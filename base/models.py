@@ -1,9 +1,34 @@
 from django.db import models
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+
 
 # Create your models here.
 
-class Users(models.Model):
-    username = models.CharField(max_length=40)
-    email = models.EmailField(max_length=40)
-    password = models.CharField(max_length=40)
-    confirmpassword = models.CharField(max_length=40)
+
+    
+    
+class RoundTripFlight(models.Model):
+    flightType = models.CharField(max_length=200)
+    destination = models.CharField(max_length=200)
+    departureDate = models.DateTimeField(max_length=200)
+    returnDate = models.DateTimeField(max_length=200)
+    totalAmount = models.CharField(max_length=200)
+     
+class OneWayFlight(models.Model):
+    flightType = models.CharField(max_length=200)
+    destination = models.CharField(max_length=200)
+    departureDate = models.DateTimeField(max_length=200)
+    totalAmount = models.CharField(max_length=200)
+    
+class BookedOneWay(models.Model):
+    flightType = models.CharField(max_length=200)
+    destination = models.CharField(max_length=200)
+    departureDate = models.DateTimeField(max_length=200)
+    totalAmount = models.CharField(max_length=200)
+    
+class BookedRoundTrip(models.Model):
+    flightType = models.CharField(max_length=200)
+    destination = models.CharField(max_length=200)
+    departureDate = models.DateTimeField(max_length=200)
+    returnDate = models.DateTimeField(max_length=200)
+    totalAmount = models.CharField(max_length=200)

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Booked Flights</title>
+    <link rel="stylesheet" href="{% static 'css/bookedflights.css' %}">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <!-- <li><a href="{% url 'home' %}">Home</a></li> -->
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main">
+        <h2 class="booked-flights-header">Booked Flights</h2>
+
+        {% if booked_flights %}
+        <h3 class="booked-flights-subheader">Booked Flights:</h3>
+        <ul class="booked-flights-list">
+            {% for flight in booked_flights %}
+            <li class="booked-flight">
+                <div class="flight-type">{{ flight.flightType }}</div>
+                <div class="flight-details">
+                    <div class="flight-destination">{{ flight.destination }}</div>
+                    <div class="flight-dates">
+                        <div class="flight-departure-date">Departure Date: {{ flight.departureDate }}</div>
+                        {% if flight.flightType == 'Round-Trip' %}
+                        <div class="flight-return-date">Return Date: {{ flight.returnDate }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="flight-amount">{{ flight.totalAmount }}</div>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% if booked_one_way %}
+        <h3 class="booked-flights-subheader">Booked One-Way Flights:</h3>
+        <ul class="booked-flights-list">
+            {% for flight in booked_one_way %}
+            <li class="booked-flight">
+                <div class="flight-type">{{ flight.flightType }}</div>
+                <div class="flight-details">
+                    <div class="flight-destination">{{ flight.destination }}</div>
+                    <div class="flight-dates">
+                        <div class="flight-departure-date">Departure Date: {{ flight.departureDate }}</div>
+                    </div>
+                </div>
+                <div class="flight-amount">{{ flight.totalAmount }}</div>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% if booked_round_trip %}
+        <h3 class="booked-flights-subheader">Booked Round-Trip Flights:</h3>
+        <ul class="booked-flights-list">
+            {% for flight in booked_round_trip %}
+            <li class="booked-flight">
+                <div class="flight-type">{{ flight.flightType }}</div>
+                <div class="flight-details">
+                    <div class="flight-destination">{{ flight.destination }}</div>
+                    <div class="flight-dates">
+                        <div class="flight-departure-date">Departure Date: {{ flight.departureDate }}</div>
+                        <div class="flight-return-date">Return Date: {{ flight.returnDate }}</div>
+                    </div>
+                </div>
+                <div class="flight-amount">{{ flight.totalAmount }}</div>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% if not booked_flights and not booked_one_way and not booked_round_trip %}
+        <p class="no-booked-flights">You have not booked any flights yet.</p>
+        {% endif %}
+    </div>
+    <br>
+    <form action="{% url 'all_flights' %}" method="GET">
+        <button type="submit">Back to Flights</button>
+    </form>
+
+    <button onclick="confirmBookings()">Confirm Bookings</button>
+
+    <script>
+        function confirmBookings() {
+            if (confirm("Are you sure you want to confirm your bookings?")) {
+                alert("Confirmed Bookings!");
+            }
+        }
+    </script>
+</body>
+
+</html>

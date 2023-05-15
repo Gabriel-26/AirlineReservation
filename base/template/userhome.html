@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+
+
+<head>
+    <title>Flight Booking Homepage</title>
+    <link rel="stylesheet" href="{% static 'css/userhome.css' %}">
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <!-- <li><a href="{% url 'home' %}">Home</a></li> -->
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <footer>
+        <p>Airlines - All Rights Reserved</p>
+    </footer>
+    <main>
+        <h1>Welcome back, {{ user.username }}!</h1>
+        <p>You are now logged in and can manage your bookings</p>
+
+        <h2>Flights</h2>
+
+        <div class="flights-container">
+            <div class="one-way-flights">
+                <h3>One-Way Flights:</h3>
+                <ul>
+                    {% for flight in one_way_flights %}
+                    <li>
+                        <div class="flight-info">
+                            <div class="flight-destination">{{ flight.destination }}</div>
+                            <div class="flight-dates">{{ flight.departureDate }}</div>
+                            <div class="flight-price">{{ flight.totalAmount }}</div>
+                        </div>
+                        <form method="POST" action="{% url 'book' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="id" value="{{ flight.id }}">
+                            <input type="hidden" name="flightType" value="One-Way">
+                            <button type="submit">Book</button>
+                        </form>
+                    </li>
+                    {% empty %}
+                    <li>No one-way flights available</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="round-trip-flights">
+                <h3>Round-Trip Flights:</h3>
+                <ul>
+                    {% for flight in round_trip_flights %}
+                    <li>
+                        <div class="flight-info">
+                            <div class="flight-destination">{{ flight.destination }}</div>
+                            <div class="flight-dates">{{ flight.departureDate }} - {{ flight.returnDate }}</div>
+                            <div class="flight-price">{{ flight.totalAmount }}</div>
+                        </div>
+                        <form method="POST" action="{% url 'book' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="id" value="{{ flight.id }}">
+                            <input type="hidden" name="flightType" value="Round-Trip">
+                            <button type="submit">Book</button>
+                        </form>
+                    </li>
+                    {% empty %}
+                    <li>No round-trip flights available</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                {% endfor %}
+        </ul>
+        {% endif %}
+
+        <form method="GET" action="{% url 'confirm' %}">
+            {% csrf_token %}
+            <button type="submit">Confirm Flight/s</button>
+        </form>
+
+    </main>
+
+
+
+
+</body>
+
+</html>

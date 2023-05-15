@@ -1,0 +1,187 @@
+/* Set up basic page styling */
+body {
+  margin: 0;
+  font-family: sans-serif;
+  padding-bottom: 150px;
+}
+
+/* Style the header and navigation bar */
+
+header {
+  background-color: #1c3267;
+  height: 60px;
+}
+
+nav ul {
+  margin: 0;
+  padding-right: 832px;
+  list-style-type: none;
+  text-align: right;
+  list-style: none;
+
+  
+}
+
+nav li {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+nav a {
+display:block;
+padding:0 10px;    
+color:#FFF;
+font-size:20px;
+line-height:60px;
+text-decoration:none;
+}
+nav a:hover {
+  text-decoration: underline;
+}
+
+
+/* Dropdown Arrow */
+
+.arrow:after {
+  content: "";
+  display: inline-block;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #fff;
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  margin-left: -10px;
+}
+
+
+/* Style the main content area */
+main {
+  max-width: 800px;
+  margin: 50px auto;
+  text-align: center;
+}
+
+.bg-images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 600px;
+}
+
+.text-block {
+  position: absolute;
+  left: 20%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-shadow: 1px 1px 2px black;
+}
+
+.bg-image-1{
+  background-image: url('../images/image1.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  width: 33.33%;
+  animation: bg-image 6s ease-in-out infinite;
+}
+
+.bg-image-2 {
+  background-image: url("../images/image2.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  width: 33.33%;
+  animation: bg-image 7s ease-in-out infinite;
+  /* animation-delay: 5s; */
+}
+
+.bg-image-3 {
+  background-image: url(" ../images/image3.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  width: 33.33%;
+  animation: bg-image 8s ease-in-out infinite;
+}
+
+.text-block {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+
+.bg-image-1 .text-block {
+  left: 15%;
+}
+
+.bg-image-2 .text-block {
+  left: 50%;
+}
+
+.bg-image-3 .text-block {
+  left: 85%;
+}
+
+
+@keyframes bg-image {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 24px;
+  margin-bottom: 40px;
+}
+
+.button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-right: 10px;
+  font-size: 18px;
+  transition: all 0.3s ease-in-out;
+}
+
+.button:hover {
+  background-color: #0056b3;
+  cursor: pointer;
+}
+
+/* Style the footer */
+
+footer p{
+font-size: 20px;
+margin-bottom: 5px;
+}
+
+footer {
+  background-color: #333333;
+    color: #FFFFFF;
+    padding: 5px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+

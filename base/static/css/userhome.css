@@ -1,0 +1,182 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    background-color: #f2f2f2;
+}
+
+header {
+    background-color: #1c3267;
+    height: 60px;
+}
+
+nav ul {
+    margin: 0;
+    padding-right: 10px;
+    list-style-type: none;
+    text-align: right;
+    list-style: none;
+
+    
+}
+
+nav li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+nav a {
+  display:block;
+  padding:0 10px;    
+  color:#FFF;
+  font-size:20px;
+  line-height:60px;
+  text-decoration:none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+  }
+
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2 {
+    margin-bottom: 10px;
+}
+
+ul {
+    margin-bottom: 20px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+form {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+.messages {
+    list-style-type: none;
+    margin-bottom: 20px;
+}
+
+.messages li {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.messages .success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.messages .error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+footer p{
+    margin-left: 5px;
+
+}
+footer {
+    background-color: #333333;
+    color: #FFFFFF;
+    padding: 5px 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.flights-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .one-way-flights,
+  .round-trip-flights {
+    width: 48%;
+  }
+  
+  .one-way-flights h3,
+  .round-trip-flights h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .flights-container ul {
+    padding-left: 0;
+    list-style: none;
+    margin: 0;
+  }
+  
+  .flights-container li {
+    margin-bottom: 10px;
+    background-color: #f7f7f7;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .flight-info {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    margin-right: 20px;
+    width: 65%;
+}
+
+.flight-info p {
+margin: 0;
+}
+
+.flight-action button {
+background-color: #4CAF50;
+color: white;
+border: none;
+padding: 10px 20px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 4px 2px;
+cursor: pointer;
+border-radius: 5px;
+}
+
+.flight-action button:hover {
+background-color: #3e8e41;
+}
+
+.no-flights {
+font-size: 18px;
+margin-bottom: 20px;
+}

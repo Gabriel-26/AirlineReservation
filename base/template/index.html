@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+
+<head>
+    <title>Airline Homepage</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <section class="bg-images">
+        <div class="bg-image-1">
+            <div class="text-block">
+                <h2>More than just the destination</h2>
+                <p>Earn Mabuhay Miles and Other Promos.</p>
+            </div>
+        </div>
+        <div class="bg-image-2">
+            <div class="text-block">
+                <h2>Know Your Flight</h2>
+                <p>The latest flight updates to keep you in charge of your trip.</p>
+            </div>
+        </div>
+        <div class="bg-image-3">
+            <div class="text-block">
+                <h2>Bookings made easy!</h2>
+                <p>Manage your flight bookings fast and seamlessly.</p>
+            </div>
+        </div>
+    </section>
+    <main>
+        <h1>Welcome to Airlines</h1>
+        <p>Please login to book your flights and manage your bookings</p>
+        <a href="{% url 'login' %}" class="button">Login</a>
+        <a href="{% url 'register' %}" class="button">Register</a>
+    </main>
+    <footer>
+        <p>Airlines - All Rights Reserved</p>
+    </footer>
+</body>
+
+</html>

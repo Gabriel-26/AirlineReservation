@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <footer>
+        <p>Airlines - All Rights Reserved</p>
+    </footer>
+
+    <div class="form">
+        <h2>Register Here</h2><br>
+        {% if messages %}
+        {% for message in messages %}
+        <h2>{{message}}</h2>
+        {% endfor %}
+        {% endif %}
+        <form action="" method="post" id="register">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder=" Username ">
+            <input type="email" name="email" placeholder=" Email ">
+            <input type="password" name="password" placeholder=" Password ">
+
+        </form>
+        <button class="btn" form="register" value="submit">Register</button>
+
+        <p class="link">Already have an account?<br>
+            <a href="{% url 'login' %}">Login</a> here</a>
+        </p>
+
+        <br>
+        <button onclick="location.href='http://localhost:8000/';" class="btn">Go back to homepage</button>
+    </div>
+
+</body>
+
+</html>
